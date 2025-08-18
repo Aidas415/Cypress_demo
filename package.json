@@ -1,0 +1,23 @@
+{
+  "name": "cypress_2",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "server": "http-server -p 8086",
+    "test": "cypress open",
+    "cy:open": "concurrently -k \"npm run server\" \"wait-on http://localhost:8086/ && npm run test\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "cypress": "^14.5.4",
+    "http-server": "^14.1.1",
+    "open": "^10.2.0"
+  },
+  "dependencies": {
+    "concurrently": "^9.2.0",
+    "wait-on": "^8.0.4"
+  }
+}
