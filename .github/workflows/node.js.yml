@@ -14,11 +14,6 @@ jobs:
 
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-        # See supported Node.js release schedule at https://nodejs.org/en/about/releases/
-
     steps:
     - name: Checkout code
     - uses: actions/checkout@v4
@@ -31,8 +26,8 @@ jobs:
     - name: Instal newman
       run: npm i -g newman
 
-    - name: Install cypress
-      run: npm i cypress
+    - name: Install libs
+      run: npm i 
 
     - name: Start cypress test
       run: npm run cy:allrun
