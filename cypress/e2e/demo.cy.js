@@ -16,7 +16,7 @@ describe('Demo file', () => {
         cy.get('.some-class-a').should('be.visible');
         cy.get('.some-class-b').should('be.visible');
 
-         cy.get('.some-class-a.some-class-b').should('be.visible');
+        cy.get('.some-class-a.some-class-b').should('be.visible');
 
         cy.get('p[class="some-class-a"]').should('be.visible');
         cy.get('p[class="some-class-a some-class-b"]').should('be.visible');
@@ -75,7 +75,7 @@ describe('Demo file', () => {
         cy.get('#comb_slc_comb').within(() => {
             cy.get('li').eq(0).should('be.visible');
             cy.get('li').eq(1).should('be.visible');
-            cy.get('li').eq(2).should('be.visible'); 
+            cy.get('li').eq(2).should('be.visible');
         });
     });
 
@@ -94,8 +94,8 @@ describe('Demo file', () => {
         cy.get('button[class="hover-button"]').invoke('show').click();
 
         cy.get('.hidden-text')
-        .contains('You clicked the button')
-        .should('be.visible');
+            .contains('You clicked the button')
+            .should('be.visible');
     });
 
 });
