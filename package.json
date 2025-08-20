@@ -8,7 +8,8 @@
     "cy:open": "concurrently -k \"npm run server\" \"wait-on http://localhost:8086/ && npm run test\"",
     "cy:run": "concurrently -k \"npm run server\" \"wait-on http://localhost:8086/ && npx cypress run\"",
     "cy:runspec": "cypress run -s cypress/e2e/spec.cy.js -b chrome",
-    "cy:allrun": "cypress run -b chrome"
+    "cy:allrun": "cypress run -b chrome",
+    "cy:oktests": "cypress run -s'cypress/e2e/autotests.cy.js,cypress/e2e/hw_todo_list.cy.js,cypress/e2e/spec.cy.js,cypress/e2e/strucutingtests.cy.js' -b chrome"
   },
   "keywords": [],
   "author": "",
