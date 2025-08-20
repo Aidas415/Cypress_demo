@@ -1,8 +1,8 @@
 /// <reference types="cypress" />
 
 describe('Hw automation exercise', () => {
-    const listOfProductsInCart = 'table[id="cart_info_table"] tbody tr';
-    const name = 'Aidas';
+    // const listOfProductsInCart = 'table[id="cart_info_table"] tbody tr';
+
 
     beforeEach(() => {
         cy.visit('https://automationexercise.com');
@@ -18,9 +18,12 @@ describe('Hw automation exercise', () => {
         cy.addProductToCart(2);
         cy.clickOnViewCart();
 
-        cy.get(listOfProductsInCart).should('have.length', 2);
+        cy.listOfProductsInCart()
+            .should('have.length', 2);
 
-        cy.getProductPrice(1).should('have.text', 'Rs. 500').should("be.visible");
+        cy.getProductPrice(1)
+            .should('have.text', 'Rs. 500')
+            .should("be.visible");
 
         // cy.getProductPrice(1)
         //     .should("be.visible")
@@ -29,7 +32,8 @@ describe('Hw automation exercise', () => {
         //             .equal("Rs. 500");
         //     });
 
-        cy.getProductsQuantity(1).should('have.text', '1');
+        cy.getProductsQuantity(1)
+            .should('have.text', '1');
 
         // cy.getProductsQuantity(1)
         //     .should("be.visible")
@@ -38,7 +42,8 @@ describe('Hw automation exercise', () => {
         //             .equal('1');
         //     });
 
-        cy.getProductsTotalPrice(1).should('have.text', 'Rs. 500');
+        cy.getProductsTotalPrice(1)
+            .should('have.text', 'Rs. 500');
 
         // cy.getProductsTotalPrice(1)
         //     .should("be.visible")
@@ -47,7 +52,8 @@ describe('Hw automation exercise', () => {
         //             .equal('Rs. 500');
         //     });
 
-        cy.getProductPrice(2).should('have.text', 'Rs. 400');
+        cy.getProductPrice(2)
+            .should('have.text', 'Rs. 400');
 
         // cy.getProductPrice(2)
         //     .should('be.visible')
@@ -56,7 +62,8 @@ describe('Hw automation exercise', () => {
         //             .equal("Rs. 400");
         //     });
 
-        cy.getProductsQuantity(2).should('have.text', '1');
+        cy.getProductsQuantity(2)
+            .should('have.text', '1');
 
         // cy.getProductsQuantity(2)
         //     .invoke('text')
@@ -65,7 +72,8 @@ describe('Hw automation exercise', () => {
         //             .equal('1')
         //     });
 
-        cy.getProductsTotalPrice(2).should('have.text', 'Rs. 400');
+        cy.getProductsTotalPrice(2)
+            .should('have.text', 'Rs. 400');
 
         // cy.getProductsTotalPrice(2)
         //     .should('be.visible')
@@ -88,77 +96,90 @@ describe('Hw automation exercise', () => {
 
         cy.clickOnViewCart();
 
-        cy.getProductsQuantity(3).should('have.text', '4');
+        cy.getProductsQuantity(3)
+            .should('have.text', '4');
     });
 
     it('Test case 1: Register user', () => {
 
+        const name = 'Aidas';
+        const email = 'any@some.com';
+
         cy.clickOnSignupLoginOfNavigationMenu();
 
-        cy.get('#form h2').eq(2).should('have.text', 'New User Signup!').should('be.visible');
+        cy.NewUserSignupIsVisible()
+            .should('have.text', 'New User Signup!')
+            .should('be.visible');
 
-        cy.get('#form input[name="name"]').type(`${name}`);
+        cy.enterNameToNewUserSignup(name);
 
-        cy.get('#form input[name="email"]').eq(1).type('savas@example.com');
+        cy.enterEmailToNewUserSignup(email);
 
-        cy.get('#form button[data-qa="signup-button"]').click();
+        cy.clickOnSignup();
 
-        cy.get('section[id="form"] > > > > > h2').should('have.text','Enter Account Information').should('be.visible');
+        cy.enterAccountInformationIsVisible()
+            .should('have.text', 'Enter Account Information')
+            .should('be.visible');
 
         // cy.within(() => {
 
-            cy.get('#id_gender1').click();
+        cy.checkMrBox();
 
-            cy.get('#form input[data-qa="password"]').type('AB55ok');
+        cy.enterPassword();
 
-            cy.get('#form select[name="days"]').select('12');
+        cy.enterBirthDay();
 
-            cy.get('#form select[name="months"]').select('March');
+        cy.enterBirthMonth();
 
-            cy.get('#form select[name="years"]').select('1994');
+        cy.enterBirthYear();
 
-            cy.get('#newsletter').click();
+        cy.checkNewsletter();
 
-            cy.get('#optin').click();
+        cy.checkOffers();
 
-            cy.get('#first_name').type(`${name}`);
+        cy.enterFirstName(`${name}`);
 
-            cy.get('#last_name').type('Pavardenis');
+        cy.enterLastName();
 
-            cy.get('#company').type('PIEVOS');
+        cy.enterCompanyName();
 
-            cy.get('#address1').type('Gatve 5, P.O.10, PIEVOS');
+        cy.enterAddress1();
 
-            cy.get('#address1').type('Skersgatvis 10, P.O.15, PIEVOS');
+        cy.enterAddress2();
 
-            cy.get('#country').select('United States');
+        cy.selectCountry();
 
-            cy.get('#state').type('State');
+        cy.enterState();
 
-            cy.get('#city').type('City');
+        cy.enteerCity();
 
-            cy.get('#zipcode').type('20');
+        cy.enterZipCode();
 
-            cy.get('#mobile_number').type('1234567890');
+        cy.enterMobileNumber();
 
-            // // });
-
-            cy.get('button[data-qa="create-account"]').click();
-
-            cy.get('h2[data-qa="account-created"]').should('have.text', 'Account Created!').should('be.visible');
-
-            cy.get('section[id="form"] a[data-qa="continue-button"]').click();
-
-            cy.get('ul[class="nav navbar-nav"] a').eq(9).contains('Logged in as Aidas').should('be.visible');
- 
-            cy.get('header[id="header"] a[href="/delete_account"]').click();
-
-            cy.get('section[id="form"] h2[data-qa="account-deleted"] b').should('have.text', 'Account Deleted!').should('be.visible');
-
-            cy.get('#form  a[data-qa="continue-button"]').click();
-
-        });
-        // it('Login User with correct email and password', () => {
-        //     cy.get('ul[nav navbar-nav] > + + + > a[id="header"]');
         // });
+
+        cy.clickCreateAccountButton();
+
+        cy.accountCreatedIsVisible()
+            .should('have.text', 'Account Created!')
+            .should('be.visible');
+
+        cy.clickOnContinueButton();
+
+        cy.loggedInAsUsernameIsVisible()
+            .should('be.visible');
+
+        cy.clickOnDeleteAccountButton();
+
+        cy.accountDeletedIsVisible()
+            .should('have.text', 'Account Deleted!')
+            .should('be.visible');
+
+        cy.get('#form  a[data-qa="continue-button"]').click();
+
     });
+    // it('Login User with correct email and password', () => {
+    //     cy.get('ul[nav navbar-nav] > + + + > a[id="header"]');
+    // });
+});
