@@ -149,8 +149,8 @@ describe('Hw automation exercise', () => {
 
             cy.get('section[id="form"] a[data-qa="continue-button"]').click();
 
-            // cy.get('ul[class="nav navbar-nav"] i[class="fa fa-user"]').contains('have.text', ' Logged in as Aidas').should('be.visible');
-
+            cy.get('ul[class="nav navbar-nav"] a').eq(9).contains('Logged in as Aidas').should('be.visible');
+ 
             cy.get('header[id="header"] a[href="/delete_account"]').click();
 
             cy.get('section[id="form"] h2[data-qa="account-deleted"] b').should('have.text', 'Account Deleted!').should('be.visible');

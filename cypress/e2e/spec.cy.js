@@ -6,7 +6,8 @@ describe('template spec', () => {
   // })
 
   it('Soucedemo login page', () => {
-    cy.visit('https://www.saucedemo.com/');
+    cy.visit('/');
+    // cy.visit('https://www.saucedemo.com/');
 
  
     cy.contains('Swag Labs');
