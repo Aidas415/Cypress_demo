@@ -1,185 +1,118 @@
 /// <reference types="cypress" />
 
-describe('Hw automation exercise', () => {
-    // const listOfProductsInCart = 'table[id="cart_info_table"] tbody tr';
+describe("Hw automation exercise", () => {
+  beforeEach(() => {
+    cy.visit("https://automationexercise.com");
+  });
 
+  it("Test case 1: Register user", () => {
+    const name = "Aidas";
+    const email = "any@some.com";
 
-    beforeEach(() => {
-        cy.visit('https://automationexercise.com');
-    });
+    cy.clickOnSignupLoginOfNavigationMenu();
 
-    it('Test case 12: Add product in cart', () => {
+    cy.NewUserSignupIsVisible()
+      .should("have.text", "New User Signup!")
+      .should("be.visible");
 
-        cy.clickOnProductsOfNavigationMenu();
+    cy.enterNameToNewUserSignup(name);
 
-        cy.addProductToCart(1);
-        cy.clickOnContinueShoping();
+    cy.enterEmailToNewUserSignup(email);
 
-        cy.addProductToCart(2);
-        cy.clickOnViewCart();
+    cy.clickOnSignup();
 
-        cy.listOfProductsInCart()
-            .should('have.length', 2);
+    cy.enterAccountInformationIsVisible()
+      .should("have.text", "Enter Account Information")
+      .should("be.visible");
 
-        cy.getProductPrice(1)
-            .should('have.text', 'Rs. 500')
-            .should("be.visible");
+    cy.checkMrBox();
 
-        // cy.getProductPrice(1)
-        //     .should("be.visible")
-        //     .then(($tag) => {
-        //         expect($tag.text().trim())
-        //             .equal("Rs. 500");
-        //     });
+    cy.enterPassword();
 
-        cy.getProductsQuantity(1)
-            .should('have.text', '1');
+    cy.enterBirthDay();
 
-        // cy.getProductsQuantity(1)
-        //     .should("be.visible")
-        //     .then((text) => {
-        //         expect(text.trim())
-        //             .equal('1');
-        //     });
+    cy.enterBirthMonth();
 
-        cy.getProductsTotalPrice(1)
-            .should('have.text', 'Rs. 500');
+    cy.enterBirthYear();
 
-        // cy.getProductsTotalPrice(1)
-        //     .should("be.visible")
-        //     .then((text) => {
-        //         expect(text.trim())
-        //             .equal('Rs. 500');
-        //     });
+    cy.checkNewsletter();
 
-        cy.getProductPrice(2)
-            .should('have.text', 'Rs. 400');
+    cy.checkOffers();
 
-        // cy.getProductPrice(2)
-        //     .should('be.visible')
-        //     .then(($tag) => {
-        //         expect($tag.text().trim())
-        //             .equal("Rs. 400");
-        //     });
+    cy.enterFirstName(`${name}`);
 
-        cy.getProductsQuantity(2)
-            .should('have.text', '1');
+    cy.enterLastName();
 
-        // cy.getProductsQuantity(2)
-        //     .invoke('text')
-        //     .then((text) => {
-        //         expect(text.trim())
-        //             .equal('1')
-        //     });
+    cy.enterCompanyName();
 
-        cy.getProductsTotalPrice(2)
-            .should('have.text', 'Rs. 400');
+    cy.enterAddress1();
 
-        // cy.getProductsTotalPrice(2)
-        //     .should('be.visible')
-        //     .then(($tag) => {
-        //         expect($tag.text().trim())
-        //             .equal('Rs. 400');
-        //     });
-    });
+    cy.enterAddress2();
 
-    it('Test case 13: Verify product quantity in cart', () => {
+    cy.selectCountry();
 
-        cy.getProduktDetails(3);
+    cy.enterState();
 
-        cy.detailsProductInformation(3)
-            .should('eq', '3');
+    cy.enteerCity();
 
-        cy.addQuantityOfProducts(4);
+    cy.enterZipCode();
 
-        cy.addProductsToCartFromInfoPage();
+    cy.enterMobileNumber();
 
-        cy.clickOnViewCart();
+    cy.clickCreateAccountButton();
 
-        cy.getProductsQuantity(3)
-            .should('have.text', '4');
-    });
+    cy.accountCreatedIsVisible()
+      .should("have.text", "Account Created!")
+      .should("be.visible");
 
-    it('Test case 1: Register user', () => {
+    cy.clickOnContinueButton();
 
-        const name = 'Aidas';
-        const email = 'any@some.com';
+    cy.loggedInAsUsernameIsVisible().should("be.visible");
 
-        cy.clickOnSignupLoginOfNavigationMenu();
+    cy.clickOnDeleteAccountButton();
 
-        cy.NewUserSignupIsVisible()
-            .should('have.text', 'New User Signup!')
-            .should('be.visible');
+    cy.accountDeletedIsVisible()
+      .should("have.text", "Account Deleted!")
+      .should("be.visible");
 
-        cy.enterNameToNewUserSignup(name);
+    cy.get('#form  a[data-qa="continue-button"]').click();
+  });
 
-        cy.enterEmailToNewUserSignup(email);
+  it("Test case 12: Add product in cart", () => {
+    cy.clickOnProductsOfNavigationMenu();
 
-        cy.clickOnSignup();
+    cy.addProductToCart(1);
+    cy.clickOnContinueShoping();
 
-        cy.enterAccountInformationIsVisible()
-            .should('have.text', 'Enter Account Information')
-            .should('be.visible');
+    cy.addProductToCart(2);
+    cy.clickOnViewCart();
 
-        // cy.within(() => {
+    cy.listOfProductsInCart().should("have.length", 2);
 
-        cy.checkMrBox();
+    cy.getProductPrice(1).should("have.text", "Rs. 500").should("be.visible");
 
-        cy.enterPassword();
+    cy.getProductsQuantity(1).should("have.text", "1");
 
-        cy.enterBirthDay();
+    cy.getProductsTotalPrice(1).should("have.text", "Rs. 500");
 
-        cy.enterBirthMonth();
+    cy.getProductPrice(2).should("have.text", "Rs. 400");
 
-        cy.enterBirthYear();
+    cy.getProductsQuantity(2).should("have.text", "1");
 
-        cy.checkNewsletter();
+    cy.getProductsTotalPrice(2).should("have.text", "Rs. 400");
+  });
 
-        cy.checkOffers();
+  it("Test case 13: Verify product quantity in cart", () => {
+    cy.getProduktDetails(3);
 
-        cy.enterFirstName(`${name}`);
+    cy.detailsProductInformation(3).should("eq", "3");
 
-        cy.enterLastName();
+    cy.addQuantityOfProducts(4);
 
-        cy.enterCompanyName();
+    cy.addProductsToCartFromInfoPage();
 
-        cy.enterAddress1();
+    cy.clickOnViewCart();
 
-        cy.enterAddress2();
-
-        cy.selectCountry();
-
-        cy.enterState();
-
-        cy.enteerCity();
-
-        cy.enterZipCode();
-
-        cy.enterMobileNumber();
-
-        // });
-
-        cy.clickCreateAccountButton();
-
-        cy.accountCreatedIsVisible()
-            .should('have.text', 'Account Created!')
-            .should('be.visible');
-
-        cy.clickOnContinueButton();
-
-        cy.loggedInAsUsernameIsVisible()
-            .should('be.visible');
-
-        cy.clickOnDeleteAccountButton();
-
-        cy.accountDeletedIsVisible()
-            .should('have.text', 'Account Deleted!')
-            .should('be.visible');
-
-        cy.get('#form  a[data-qa="continue-button"]').click();
-
-    });
-    // it('Login User with correct email and password', () => {
-    //     cy.get('ul[nav navbar-nav] > + + + > a[id="header"]');
-    // });
+    cy.getProductsQuantity(3).should("have.text", "4");
+  });
 });
