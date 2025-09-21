@@ -1,6 +1,46 @@
 # 🚀 Cypress Demo Project
 
-This is a demo project created for learning Cypress and CI/CD integration with GitHub Actions.
+[![Cypress Tests](https://github.com/Aidas415/Cypress_demo/actions/workflows/node.js.yml/badge.svg)](https://github.com/Aidas415/Cypress_demo/actions/workflows/node.js.yml)
+
+This is a demo project created for learning Cypress and CI/CD integration with GitHub Actions.  
+It includes UI-based end-to-end tests for sample components and workflows.
+
+## 🧩 Project Structure
+
+> 📌 Icon meanings
+
+- 📁 –  folder
+- 📄 – file
+- 🔬 – Cypress test file 
+
+```
+├── 📁 .github
+│   └── 📁 workflows
+│       └── 📄 node.js.yml
+├── 📁 cypress 
+│   ├── 📁 downloads
+│   │   └── 📄 downloads.htm
+│   ├── 📁 e2e
+│   │   ├── 📁 demo_config
+│   │   │   └── automation_config.cy.js
+│   │   ├── 🔬 autotests.cy.js
+│   │   ├── 🔬 hw_todo_list.cy.js
+│   │   ├── 🔬 spec.cy.js
+│   │   └── 🔬 strucutingtests.cy.js
+│   ├── 📁 fixtures  
+│   │   └── 📄 example.json
+│   └── 📁 support
+│       ├── 📄 commands.js
+│       └── 📄 e2e.js
+├── 📄 .gitignore
+├── 📄 README.md
+├── 📄 cypress.config.js
+├── 📄 demo.html
+├── 📄 package-lock.json
+└── 📄 package.json
+```
+
+
 
 ## 🧪 This project includes a few sample Cypress test cases:
 
@@ -19,6 +59,8 @@ This is a demo project created for learning Cypress and CI/CD integration with G
 - Run tests:
 npx cypress open
 
+- Run tests in headless mode:
+npx cypress run
 
 ## ⚙️ GitHub Actions
 
