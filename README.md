@@ -7,9 +7,10 @@ It includes UI-based end-to-end tests for sample components and workflows.
 
 ## 📖 Project Overview
 
-- **Testing Tool:** Cypress  
-- **CI/CD:** GitHub Actions  
-- **Purpose:** Learning Cypress and automated testing workflows  
+- **Testing Tool:** [Cypress](https://www.cypress.io/)  
+- **CI/CD Pipeline:** [GitHub Actions](https://docs.github.com/en/actions)  
+- **Purpose:** Learning Cypress and automated testing workflows
+
 
 ## 🧩 Project Structure
 
@@ -68,10 +69,16 @@ npx cypress open
 - Run tests in headless mode:
 npx cypress run
 
-## ⚙️ GitHub Actions
+## ⚙️ CI/CD with GitHub Actions
 
-Tests are automatically triggered on every push or pull request.
-Workflow file: .github/workflows/node.js.yml
+Tests are automatically triggered on:
+- Push to the `main` branch
+- Pull requests targeting `main`
+
+Workflow configuration file: [`node.js.yml`](https://github.com/Aidas415/Cypress_demo/blob/main/.github/workflows/node.js.yml)
+
+Learn more about [GitHub Actions](https://docs.github.com/en/actions) and how to automate your testing workflows.
+
 
 ## ⚠️ Notes
 
@@ -80,5 +87,7 @@ Some test files are placeholders and do not contain active test cases.
 
 ## 👤 Author
 
-Created by Aidas.
-Feel free to fork or adapt for your own learning.
+Created by **Aidas Ambotas**  
+📧 Email: aidasambotas@gmail.com  
+🌐 GitHub: [github.com/Aidas415](https://github.com/Aidas415)
+
