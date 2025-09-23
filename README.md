@@ -87,7 +87,7 @@ Some test files are placeholders and do not contain active test cases.
 
 ## 📜 License
 
-ISC License
+This project is licensed under the [ISC License](https://opensource.org/licenses/ISC).
 
 ## 👤 Author
 
