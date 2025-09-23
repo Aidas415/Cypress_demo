@@ -85,6 +85,10 @@ Learn more about [GitHub Actions](https://docs.github.com/en/actions) and how to
 This project is for educational purposes.
 Some test files are placeholders and do not contain active test cases.
 
+## 📜 License
+
+ISC License
+
 ## 👤 Author
 
 Created by **Aidas Ambotas**  
