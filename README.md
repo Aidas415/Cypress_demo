@@ -5,6 +5,8 @@
 This is a demo project created for learning Cypress and CI/CD integration with GitHub Actions.  
 It includes UI-based end-to-end tests for sample components and workflows.
 
+---
+
 ## 📖 Project Overview
 
 - **Testing Tool:** [Cypress](https://www.cypress.io/)  
